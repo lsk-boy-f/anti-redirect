@@ -91,16 +91,18 @@
 
 ### 贡献代码
 
-需要通过 NodeJs 把 TypeScript 编译成 javascript
+需要 Node.js 22 或更高版本，并使用 pnpm 11 安装依赖、编译 TypeScript。
 
 ```bash
 git clone https://github.com/axetroy/anti-redirect.git
 
 cd ./anti-redirect
 
-npm install
-npm run watch
+corepack pnpm install --frozen-lockfile
+corepack pnpm run watch
 ```
+
+发布构建使用 `corepack pnpm run build`；带内联 Source Map 的调试构建使用 `corepack pnpm run build:debug`。
 
 ### 开源许可
 

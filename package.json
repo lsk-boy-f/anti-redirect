@@ -1,15 +1,19 @@
 {
   "name": "anti-redirect",
   "version": "2.21.7",
+  "packageManager": "pnpm@11.28.4",
+  "engines": {
+    "node": ">=22"
+  },
   "description": "去除重定向, 支持谷歌/百度/搜狗/360/知乎/贴吧/简书/豆瓣/微博...",
   "main": "./dist/anti-redirect.user.js",
   "scripts": {
-    "test": "npm run build",
+    "test": "cross-env NODE_ENV=production webpack --progress",
     "build": "cross-env NODE_ENV=production webpack --progress",
     "build:debug": "cross-env NODE_ENV=development webpack --progress",
     "watch": "cross-env NODE_ENV=development webpack --progress --watch",
-    "changelog": "npx conventional-changelog-cli -p angular -i CHANGELOG.md -s -r 0",
-    "deploy": "npm run build && npx gh-pages -d ./dist",
+    "changelog": "pnpm dlx conventional-changelog-cli -p angular -i CHANGELOG.md -s -r 0",
+    "deploy": "pnpm run build && pnpm dlx gh-pages -d ./dist",
     "lint": "rome check --apply-unsafe --formatter-enabled true --organize-imports-enabled true --linter-enabled true --verbose ./src",
     "format": "rome format --write ./src"
   },

@@ -7,29 +7,28 @@ jobs:
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
-        node: ["12.14.1"]
         os: [ubuntu-latest, macOS-latest, windows-latest]
-    name: node.js ${{ matrix.node }} test in ${{ matrix.os }}
+    name: Node.js 22 test in ${{ matrix.os }}
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
 
-      - name: Environment
-        run: |
-          node -v
-          npm -v
-          yarn --version
+      - uses: pnpm/setup@v1
+        with:
+          runtime: node@22
+          cache: true
+          install: false
 
       - name: Install
-        run: yarn
+        run: pnpm install --frozen-lockfile
 
       - name: Linter
-        run: yarn run lint
+        run: pnpm run lint
 
-      - name: Formater
-        run: yarn run format
+      - name: Formatter
+        run: pnpm run format
 
       - name: Compile
-        run: yarn run build
+        run: pnpm run build
 
       - uses: actions/upload-artifact@v3
         if: runner.os == 'linux'

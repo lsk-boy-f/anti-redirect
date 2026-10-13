@@ -32,8 +32,8 @@ const webpackConfig: webpack.Configuration = {
   module: {
     rules: [{ test: /\.tsx?$/, loader: "ts-loader" }],
   },
-  // 两个版本都保留可读代码；只有调试版内嵌 Source Map 以映射回 TypeScript 源码。
-  mode: "development",
+  // 两个版本都保留可读代码，并由 NODE_ENV 控制运行时配置；只有调试版内嵌 Source Map。
+  mode: "none",
   plugins: [
     new webpack.DefinePlugin(
       (() => {
