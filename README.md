@@ -1,11 +1,12 @@
-[![Build Status](https://github.com/axetroy/anti-redirect/workflows/build/badge.svg)](https://github.com/axetroy/anti-redirect/actions)
-[![DeepScan grade](https://deepscan.io/api/teams/5773/projects/7595/branches/79869/badge/grade.svg)](https://deepscan.io/dashboard#view=project&tid=5773&pid=7595&bid=79869)
+[![Build Status](https://github.com/lsk-boy-f/anti-redirect/actions/workflows/build.yml/badge.svg)](https://github.com/lsk-boy-f/anti-redirect/actions/workflows/build.yml)
 [![996.icu](https://img.shields.io/badge/link-996.icu-red.svg)](https://996.icu)
 [![LICENSE](https://img.shields.io/badge/license-Anti%20996-blue.svg)](https://github.com/996icu/996.ICU/blob/master/LICENSE)
 
 ### GM 脚本，反重定向
 
 去除各搜索引擎/常用网站的重定向
+
+本仓库由 [lsk-boy-f](https://github.com/lsk-boy-f) 维护，基于 [Axetroy 的原项目](https://github.com/axetroy/anti-redirect)。
 
 > 注意事项：
 >
@@ -18,17 +19,11 @@
 
 > 反馈最好能带上出问题的网页地址
 
-- https://github.com/axetroy/anti-redirect/issues/new/choose
-- https://github.com/axetroy/anti-redirect/issues/new/choose
-- https://github.com/axetroy/anti-redirect/issues/new/choose
+- https://github.com/lsk-boy-f/anti-redirect/issues/new/choose
 
-### 如果这能够帮助到你, 不妨点个 star, 你的支持就是我更新的动力
+[点击从 GitHub 安装](https://github.com/lsk-boy-f/anti-redirect/raw/gh-pages/anti-redirect.user.js)
 
-[点击从 Github 安装](https://github.com/axetroy/anti-redirect/raw/gh-pages/anti-redirect.user.js)
-
-[点击从 GreasyFork 安装](https://greasyfork.org/scripts/11915-anti-redirect-typescript/code/anti-redirect.user.js)
-
-[点击从 CDN 安装(国内用户)](https://cdn.jsdelivr.net/gh/axetroy/anti-redirect@gh-pages/anti-redirect.user.js)
+[点击从 CDN 安装](https://cdn.jsdelivr.net/gh/lsk-boy-f/anti-redirect@gh-pages/anti-redirect.user.js)
 
 ### 工作原理
 
@@ -40,7 +35,7 @@
 
 ### 更新日志
 
-[https://github.com/axetroy/anti-redirect/blob/master/CHANGELOG.md](https://github.com/axetroy/anti-redirect/blob/master/CHANGELOG.md)
+[更新日志](https://github.com/lsk-boy-f/anti-redirect/blob/master/CHANGELOG.md)
 
 ### 支持的站点
 
@@ -87,14 +82,14 @@
 
 ### 我想支持更多的站点
 
-点击这个[链接](https://github.com/axetroy/anti-redirect/issues/new)，提交 issues，说出你想要支持的站点
+点击这个[链接](https://github.com/lsk-boy-f/anti-redirect/issues/new)，提交 issues，说出你想要支持的站点
 
 ### 贡献代码
 
 需要 Node.js 22 或更高版本，并使用 pnpm 11 安装依赖、编译 TypeScript。
 
 ```bash
-git clone https://github.com/axetroy/anti-redirect.git
+git clone https://github.com/lsk-boy-f/anti-redirect.git
 
 cd ./anti-redirect
 
@@ -106,7 +101,7 @@ corepack pnpm run watch
 
 ### 开源许可
 
-The [Anti 996 License](https://github.com/axetroy/anti-redirect/blob/master/LICENSE)
+The [Anti 996 License](https://github.com/lsk-boy-f/anti-redirect/blob/master/LICENSE)
 
 请仔细阅读开源许可。
 

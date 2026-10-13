@@ -1,6 +1,6 @@
 {
   "name": "anti-redirect",
-  "version": "2.21.7",
+  "version": "2.21.8",
   "packageManager": "pnpm@11.28.4",
   "engines": {
     "node": ">=22"
@@ -17,8 +17,12 @@
     "lint": "rome check --apply-unsafe --formatter-enabled true --organize-imports-enabled true --linter-enabled true --verbose ./src",
     "format": "rome format --write ./src"
   },
-  "author": "Axetroy",
-  "license": "MIT",
+  "author": "lsk-boy-f",
+  "contributors": ["Axetroy (original author)"],
+  "homepage": "https://github.com/lsk-boy-f/anti-redirect",
+  "repository": "https://github.com/lsk-boy-f/anti-redirect.git",
+  "bugs": "https://github.com/lsk-boy-f/anti-redirect/issues",
+  "license": "SEE LICENSE IN LICENSE",
   "keywords": [
     "greasy",
     "script",

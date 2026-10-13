@@ -9,9 +9,10 @@ const TsconfigPathsPlugin = require("tsconfig-paths-webpack-plugin");
 const pkg = require("./package.json");
 const isProduction = process.env.NODE_ENV === "production";
 const scriptName = isProduction ? pkg.name : `${pkg.name} (debug)`;
+const repositoryUrl = pkg.homepage;
 const updateMetadata = isProduction
-  ? `// @downloadURL       https://github.com/axetroy/anti-redirect/raw/gh-pages/anti-redirect.user.js
-// @updateURL         https://github.com/axetroy/anti-redirect/raw/gh-pages/anti-redirect.user.js
+  ? `// @downloadURL       ${repositoryUrl}/raw/gh-pages/anti-redirect.user.js
+// @updateURL         ${repositoryUrl}/raw/gh-pages/anti-redirect.user.js
 `
   : "";
 
@@ -97,21 +98,14 @@ const webpackConfig: webpack.Configuration = {
 // @connect           *
 // @compatible        chrome  完美运行
 // @compatible        firefox  完美运行
-// @supportURL        https://github.com/axetroy/anti-redirect/issues/new/choose
-// @homepage          https://github.com/axetroy/anti-redirect
+// @supportURL        ${repositoryUrl}/issues/new/choose
+// @homepage          ${repositoryUrl}
 // @run-at            document-start
-// @contributionURL   troy450409405@gmail.com|alipay.com
-${updateMetadata}// @namespace         https://greasyfork.org/zh-CN/users/3400-axetroy
-// @license           Anti 996 License; https://github.com/axetroy/anti-redirect/blob/master/LICENSE
+${updateMetadata}// @namespace         ${repositoryUrl}
+// @license           Anti 996 License; ${repositoryUrl}/blob/master/LICENSE
 // ==/UserScript==
 
-// Github源码: https://github.com/axetroy/anti-redirect
-
-// 如果这能帮助到你，欢迎在 Github 上点击 star 和 follow.
-
-// 或者在支付宝搜索 " 511118132 " 领取红包
-
-// 你的支持就是我更新的动力
+// 源码: ${repositoryUrl}
 
 `,
       entryOnly: true,

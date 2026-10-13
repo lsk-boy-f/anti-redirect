@@ -22,15 +22,9 @@ export class App {
       'font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;font-size:64px;color:#00bbee;-webkit-text-fill-color:#00bbee;-webkit-text-stroke: 1px #00bbee;',
       "font-size:12px;color:#999999;",
       new Date().getFullYear(),
-      "\n" + "Author @Axetroy",
+      "\n" + "Original author @Axetroy · Maintainer @lsk-boy-f",
     );
     console.log("[Anti Redirect]: 如果发现页面重定向未去除，欢迎反馈!");
-    console.log(
-      `%c[Anti Redirect]: 支付宝搜索 "%c511118132%c" 领取红包支持作者!`,
-      "font-size: 12px;",
-      "font-size: 16px;color: red",
-      "font-size: 12px;",
-    );
   }
   /**
    * A 标签是否匹配服务提供者
