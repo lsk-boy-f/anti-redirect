@@ -7,6 +7,13 @@ import * as path from "path";
 import * as webpack from "webpack";
 const TsconfigPathsPlugin = require("tsconfig-paths-webpack-plugin");
 const pkg = require("./package.json");
+const isProduction = process.env.NODE_ENV === "production";
+const scriptName = isProduction ? pkg.name : `${pkg.name} (debug)`;
+const updateMetadata = isProduction
+  ? `// @downloadURL       https://github.com/axetroy/anti-redirect/raw/gh-pages/anti-redirect.user.js
+// @updateURL         https://github.com/axetroy/anti-redirect/raw/gh-pages/anti-redirect.user.js
+`
+  : "";
 
 // webpack.config.js
 const webpackConfig: webpack.Configuration = {
@@ -15,7 +22,7 @@ const webpackConfig: webpack.Configuration = {
   },
   output: {
     path: path.join(__dirname, "/dist"),
-    filename: "[name].user.js",
+    filename: isProduction ? "[name].user.js" : "[name].debug.user.js",
   },
   resolve: {
     modules: ["node_modules"],
@@ -25,26 +32,23 @@ const webpackConfig: webpack.Configuration = {
   module: {
     rules: [{ test: /\.tsx?$/, loader: "ts-loader" }],
   },
-  mode: "none",
+  // 两个版本都保留可读代码；只有调试版内嵌 Source Map 以映射回 TypeScript 源码。
+  mode: "development",
   plugins: [
     new webpack.DefinePlugin(
       (() => {
         const result = { "process.env.NODE_ENV": '"development"' };
         for (const key in process.env) {
-          if (process.env.hasOwnProperty(key)) {
+          if (Object.prototype.hasOwnProperty.call(process.env, key)) {
             result[`process.env.${key}`] = JSON.stringify(process.env[key]);
           }
         }
         return result;
       })()
     ),
-    new webpack.LoaderOptionsPlugin({
-      minimize: true,
-      debug: false,
-    }),
     new webpack.BannerPlugin({
       banner: `// ==UserScript==
-// @name              ${pkg.name}
+// @name              ${scriptName}
 // @author            ${pkg.author}
 // @description       ${pkg.description}
 // @version           ${pkg.version}
@@ -97,9 +101,7 @@ const webpackConfig: webpack.Configuration = {
 // @homepage          https://github.com/axetroy/anti-redirect
 // @run-at            document-start
 // @contributionURL   troy450409405@gmail.com|alipay.com
-// @downloadURL       https://github.com/axetroy/anti-redirect/raw/gh-pages/anti-redirect.user.js
-// @updateURL         https://github.com/axetroy/anti-redirect/raw/gh-pages/anti-redirect.user.js
-// @namespace         https://greasyfork.org/zh-CN/users/3400-axetroy
+${updateMetadata}// @namespace         https://greasyfork.org/zh-CN/users/3400-axetroy
 // @license           Anti 996 License; https://github.com/axetroy/anti-redirect/blob/master/LICENSE
 // ==/UserScript==
 
@@ -114,9 +116,11 @@ const webpackConfig: webpack.Configuration = {
 `,
       entryOnly: true,
       raw: true,
+      // 在资源处理结束后再写入元信息，确保其位于用户脚本文件开头。
+      stage: webpack.Compilation.PROCESS_ASSETS_STAGE_SUMMARIZE,
     }),
   ],
-  devtool: 'inline-source-map',
+  devtool: isProduction ? false : "inline-source-map",
 };
 
 module.exports = webpackConfig;
